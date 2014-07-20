@@ -1,0 +1,32 @@
+body {
+	background: #fff;
+	font-family: Arial, sans-serif;
+	color: #444;
+}
+
+
+.group{
+	background-color:gray;
+	margin-top:50px;
+	margin-bottom:50px;
+}
+.group:after{
+	content: "hi";
+    border: 1px solid black;
+    display: block;
+    clear: both;
+    visibility: hidden;
+}
+
+.main-content{
+	float:left;
+	width:45%;
+}
+.sidebar{
+	float:right;
+	width:45%;
+}
+
+.footer{
+	clear:both;
+}

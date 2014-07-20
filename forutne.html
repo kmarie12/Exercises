@@ -4,14 +4,16 @@
 </head>
 <body>
 	<h2>Life Line</h2>
-	<h4>Push the Button!</h4>
-
-  <button id="fortune">Tell my Fortune!</button>
-  <div id="GoFortune"></div>
- 
+<form>
+<input type = "text" id = "jobTitle" placeholder="Job Title" />
+<input type="text" id= "location" placeholder= "Location"/>
+<input type = "text" id = "partner"placeholder = "Partner" />
+<input type="text" id= "children" placeholder = "Number of Children"/>
+<button type = "submit" id = "submit">Submit</button>
+</form>
 
 <script type="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script type="text/javascript">
+<script>
 
 /**
  * @exercise 1 - lifeLine
@@ -20,10 +22,24 @@
 **/
 // Create function with name tellFortune and appropriate parameters
 // Take 4 arguments: number of children, partner's name, hometown, job title.
-var tellFortune = function(job,location,partner,children){
-
+var lifeLine = function(job,location,partner,children){
+//Check if first letter of jobTitle is a,e,i,o, or u
+//Get first letter and make it lowercase
+var firstLetter = jobTitle.charAt(0).toLowerCase();
+console.log(firstLetter);
+if(firstLetter=== 'a' || 
+	firstLetter==='e' ||
+	firstLetter==='o' ||
+	firstLetter==='u'){
+	//Do 
+var a = 'an ';
+}else {
+	var a = 'a ';
+}
+	console.log(firstLetter);
   // Define string variable that will have that output
-var fortune = "You will be a " + job + " in " + location + "married to " + partner + "with " + children + "kids."
+var fortune = "You will be a " + job + " from " + location + "married to " + partner + " with " + children + "kids."
+console.log(fortune);
 return fortune;
   // Return that string
 };
@@ -31,9 +47,15 @@ console.assert(lifeLine('bball player', 'Spain', 'Shaq', 3) === 'You are a bball
 console.assert(lifeLine('stunt double', 'Japan', 'Ryan Gosling', 3000) === 'You are a stunt double from Japan and married to Ryan Gosling  with 3000 kids.');
 console.assert(lifeLine('Elvis impersonator', 'Russia', 'The Oatmeal', 0) === 'You are a Elvis impersonator from Russia and married to The Oatmeal  with 0 kids.') ; 
 
-
-
-
+$("#submit").on('click', function(e){
+	e.preventDefualt();
+	var jobTitle = $("#jobTitle").val();
+	var jobTitle = $("#location").val();
+	var jobTitle = $("#partner").val();
+	var jobTitle = $("#children").val();
+	var message = lifeLine(jobTitle, location, partner, children);
+	$("#message").html(message);
+});
 </script>
 </body>
 </html>

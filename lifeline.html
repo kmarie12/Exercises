@@ -1,36 +1,62 @@
 <html>
 <head>
-	<title><h2>Life Line</h2></title>
+	<title>Life Line</title>
+	<style>
+		body, input, button {
+			font-size: 20pt;
+		}
+	</style>
 </head>
 <body>
-	<h2>Life Line</h2>
-	<h4>Push the Button!</h4>
+	<form>
+		<input type = "text" id = "jobTitle" placeholder = "Job Title"/>
+		<input type = "text" id = "hometown" placeholder = "Hometown"/>
+		<input type = "text" id = "partner" placeholder = "Partner"/>
+		<input type = "text" id= "children" placeholder="Children"/>
+		<button type = "submit" id="submit">Submit</button>
 
-  <button id="fortune">Tell my Fortune!</button>
-  <div id="GoFortune"></div>
- 
-
-<script type="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script type="text/javascript">
+	</form>
+	<div id = "message"></div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
 
 /**
  * @exercise 1 - lifeLine
  * @description takes children, partner's name, hometown, and job
  * @returns 'You are a W from X and married to Y  with Z kids.'
 **/
-function tellFortune(){
-		var message;
+// function tellFortune(){
+// 		var message;
 // Create function with name tellFortune and appropriate parameters
 // Take 4 arguments: number of children, partner's name, hometown, job title.
+var lifeLine = function(jobTitle, hometown, partner, children){
+		var firstLetter = jobTitle.charAt(0).toLowerCase();
+		if (firstLetter === 'a' || firstLetter === 'e' || firstLetter === 'i' || firstLetter === 'o' || firstLetter === 'u'){
+			var a = 'an';
+		}else {var a = 'a';
 
+}
+	var answer = "You are " + a + jobTitle + " from " + hometown + ", you are married to " + partner + ", and you have " + children + " kids.";
+	return answer;
+};
   // Define string variable that will have that output
 
   // Return that string
 
-console.assert(lifeLine('bball player', 'Spain', 'Shaq', 3) === 'You are a bball player from Spain and married to Shaq  with 3 kids.' ); 
-console.assert(lifeLine('stunt double', 'Japan', 'Ryan Gosling', 3000) === 'You are a stunt double from Japan and married to Ryan Gosling  with 3000 kids.');
-console.assert(lifeLine('Elvis impersonator', 'Russia', 'The Oatmeal', 0) === 'You are a Elvis impersonator from Russia and married to The Oatmeal  with 0 kids.') ; 
+// console.assert(lifeLine('bball player', 'Spain', 'Shaq', 3) === 'You are a bball player from Spain and married to Shaq  with 3 kids.' ); 
+// console.assert(lifeLine('stunt double', 'Japan', 'Ryan Gosling', 3000) === 'You are a stunt double from Japan and married to Ryan Gosling  with 3000 kids.');
+// console.assert(lifeLine('Elvis impersonator', 'Russia', 'The Oatmeal', 0) === 'You are a Elvis impersonator from Russia and married to The Oatmeal  with 0 kids.') ; 
 
+$("#submit").on('click', function (e){
+	e.preventDefault();
+	var jobTitle = $("#jobTitle").val();
+	var hometown = $("#hometown").val();
+	var partner = $("#partner").val();
+	var children = $("#children").val();
+
+	var message = lifeLine(jobTitle, hometown, partner, children);
+	$("#message").html(message);
+});
 
 
 
